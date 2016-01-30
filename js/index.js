@@ -39,7 +39,6 @@ window.addEventListener('resize', function() {
 });
 
 window.addEventListener('contextmenu', function(event) {
-
   switch (currentTool) {
     case tools.MOVE:
       console.log('right move!');
@@ -135,6 +134,7 @@ function chip(event) {
   var raycaster = new THREE.Raycaster();
   var mouse = new THREE.Vector2();
 
+  // get the relative mouse position
   mouse.x = (event.clientX/WIDTH)*2-1;
   mouse.y = -(event.clientY/HEIGHT)*2+1;
 
@@ -144,9 +144,9 @@ function chip(event) {
 
   for (var i=0; i<1; i++) {
     console.log('found one!');
-    intersects[i].object.material.color.set(0xff0000);
   }
 
+  // Create the sphere to subtract
   var sphereGeometry = new THREE.SphereGeometry(10, 10, 10);
   var sphereMaterial = new THREE.MeshLambertMaterial({
     color: 0xffff00
